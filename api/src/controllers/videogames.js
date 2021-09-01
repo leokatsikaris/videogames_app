@@ -1,12 +1,8 @@
 const {Videogame} = require ('../db');
 const axios = require('axios');
 const {v4: uuid} = require ('uuid');
-const {API_KEY} = require ('../../constants');
+const {API_KEY, API_GAMES} = require ('../../constants');
 
-async function getGamesFromDB (){
-    const games = await Videogame.FindAll();
-    return games; 
-}
 
 async function addGame (req, res) {
     const id = uuid();
@@ -23,30 +19,34 @@ async function addGame (req, res) {
         },
       });
       if(games){
-        // let aux = [games]
         return res.json({
             message: 'New game created successfully',
             data: new Array(games)
         });
-      }
-    } catch(err){
-      console.log(err);
-      res.status(500).send('Data error');
     }
-  }
+} catch(err){
+    console.log(err);
+    res.status(500).send('Data error');
+    }
+}
+
+async function getGamesFromDB (){
+    const games = await Videogame.findAll();
+    return games; 
+}
 
 async function getVideogames (req, res){
     if (req.query.name){
-        const videogames = await (axios.get(`https://api.rawg.io/api/games?search=${req.query.name}&key=${API_KEY}`));
-        const gamesCreated = await getGamesFromDB();
-        if (videogames.data.results[0]) return res.json(gamesCreated + videogames.data.results);
+        const videogames = await (axios.get(`${API_GAMES}?search=${req.query.name}&key=${API_KEY}`));
+        if (videogames.data.results[0]) return res.json(videogames.data.results);
 
         return res.status(400).send('Videogame not found');
 
     } else {
         try {
-            const videogames = await (axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`));
-            return res.json(videogames.data.results); 
+            const videogames = await (axios.get(`${API_GAMES}?key=${API_KEY}`));
+            const gamesFromDB = await getGamesFromDB();
+            return res.json(gamesFromDB.concat(videogames.data.results)); 
         } catch (error){
             return res.status(400).send('Videogame not found');
         }
@@ -54,16 +54,12 @@ async function getVideogames (req, res){
 }
 
 async function getVideogamesById (req, res){
-    if (req.params.idVideogame){
-        try {
-            console.log('Entre');
-            const videogames = await (axios.get(`https://api.rawg.io/api/games/${req.params.idVideogame}?key=${API_KEY}`));
-            return res.json(videogames.data.results);
-        } catch {
-            return res.status(400).send('This ID does not belong to a videogame');
-        }
+    try {
+        const videogames = await axios.get(`${API_GAMES}/${req.params.idVideogame}?key=${API_KEY}`);
+        return res.json(videogames.data);
+    } catch {
+        return res.status(400).send('This ID does not belong to a videogame');
     }
-    return res.status(400).send('ID not provided');
 }
 
 module.exports = {
