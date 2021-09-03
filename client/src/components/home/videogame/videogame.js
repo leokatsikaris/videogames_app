@@ -1,9 +1,10 @@
 import React from 'react';
 
-export function Videogame() {
+export function Videogame({name, background_image}) {
     return (
         <div>
-            This is a Videogame
+            <p>{name}</p>
+            <img src={background_image} alt=''/>
         </div>
     )
 }

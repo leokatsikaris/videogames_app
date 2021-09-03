@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 export function getGames() {
     return function (dispatch) {
@@ -15,4 +16,17 @@ export function getGamesByName() {
 }
   
 export function getGameDetail(id) {
+        return function(dispatch){
+        return axios.get(`http://http://localhost:3001/videogame/${id}`)
+        .then ((game) => {
+            dispatch({
+                type: 'GET_GAME_DETAIL',
+                payload: game.data
+            })
+        })
+    }
+}
+
+export function getGamesDB(id) {
+
 }
