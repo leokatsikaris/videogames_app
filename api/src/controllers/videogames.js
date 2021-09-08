@@ -12,7 +12,7 @@ async function addGame (req, res) {
         id,
         name: req.body.name,
         description: req.body.description,
-        release_date: req.body.release_date,
+        released_date: req.body.released_date,
         rating: req.body.rating,
         platforms: req.body.platforms, 
       },

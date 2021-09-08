@@ -12,12 +12,21 @@ export function getGames() {
     }
 }
 
-export function getGamesByName() {
+export function getGamesByName(nameSearched) {
+    return function (dispatch) {
+        return axios.get(`http://localhost:3001/videogames?name=${nameSearched}`)
+        .then((games) => {
+            dispatch ({
+                type: 'GET_GAMES_BY_NAME',
+                payload: games.data
+            })
+        })  
+    }
 }
   
-export function getGameDetail(id) {
-        return function(dispatch){
-        return axios.get(`http://http://localhost:3001/videogame/${id}`)
+export function getGameDetail(idVideogame) {
+    return function(dispatch){
+        return axios.get(`http://localhost:3001/videogame/${idVideogame}`)
         .then ((game) => {
             dispatch({
                 type: 'GET_GAME_DETAIL',
@@ -27,6 +36,15 @@ export function getGameDetail(id) {
     }
 }
 
-export function getGamesDB(id) {
+// export function addGame(body) {
+//     return function(dispatch){
+//         return axios.post('http://localhost:3001/videogame', body)
+//         .then ((game) => {
+//             dispatch({
+//                 type: 'ADD_GAME',
+//                 payload: game.data
+//             })
+//         })
+//     }
 
-}
+// }

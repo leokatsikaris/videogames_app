@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    release_date: {
+    released_date: {
       type: DataTypes.STRING
     },
     rating: {
@@ -27,10 +27,10 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: false
     },
-    // genre: {
-    //   type: DataTypes.ARRAY(DataTypes.TEXT),
-    //   allowNull: false,
-    // },
+    genres: {
+      type: DataTypes.ARRAY(DataTypes.TEXT),
+      allowNull: false,
+    },
   },
   {
     timestamps: false

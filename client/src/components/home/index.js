@@ -1,6 +1,6 @@
 import React from 'react';
 import { Search } from './search/search';
-import { Videogames } from './videogames/videogames';
+import { Videogames }  from './videogames/videogames';
 import { Link } from 'react-router-dom';
 
 export function Home() {
