@@ -16,7 +16,7 @@ export function Search() {
       }
 
     const handleClick = function() {
-        history.push(`/videogames/:${input.name}`)
+        history.push(`/videogames/${input.name}`);
     }
 
     return (
@@ -26,8 +26,7 @@ export function Search() {
             name='name' 
             value= {input.name}
             placeholder='Insert a name'
-            onChange={handleChange}
-            onkeydown={handleClick}/>
+            onChange={handleChange}/>
             <button 
             onClick={handleClick}>Search</button> 
         </div>

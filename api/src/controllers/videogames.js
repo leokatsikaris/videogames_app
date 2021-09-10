@@ -1,4 +1,4 @@
-const {Videogame} = require ('../db');
+const { Videogame, Gender } = require ('../db');
 const axios = require('axios');
 const {v4: uuid} = require ('uuid');
 const {API_KEY, API_GAMES} = require ('../../constants');
@@ -7,59 +7,34 @@ const {API_KEY, API_GAMES} = require ('../../constants');
 async function addGame (req, res) {
   const id = uuid();
   try {
-    const games = await Videogame.findOrCreate({
-      where: {
+    const games = await Videogame.create({
         id,
         name: req.body.name,
         description: req.body.description,
         released_date: req.body.released_date,
         rating: req.body.rating,
-        platforms: req.body.platforms, 
-      },
+        platforms: req.body.platforms,
     });
-    
-    if(games){
-      return res.json({
-          message: 'New game created successfully',
-          data: games
-      });
-  }
+
+    const genderDB = await Gender.findAll({
+        where: {
+            name: req.body.genres
+        }
+    })
+
+    for (let i=0; i < genderDB.length; i++){
+        games.addGender(genderDB[i].dataValues.id);
+    }
+
+    return res.json({
+        message: 'New game created successfully',
+        data: games
+    })
 } catch(err){
-  console.log(err);
-  res.status(500).send('Data error');
+    console.log(err);
+  res.status(500).send({msg: 'Data error', err});
   }
 }
-
-// async function addGame (req, res){
-//   const id = uuid();
-//   const game = { ...req.body, id };
-//   try {
-//     const [games] = await Videogame.findOrCreate({
-//       where: {
-//           id: game.id,
-//           name: game.name,
-//           description: game.description,
-//           release_date: game.releaseDate,
-//           rating: game.rating,
-//           platforms: game.platforms,
-//           genre: game.genre,
-//         }
-//       });
-//       let dbGenre = await Gender.findAll({
-//         where: {name: game.genre}
-//       });
-//       games.addGender(dbGenre);
-//       if(games){
-//         let aux = [games];
-//         return res.json({
-//           message: 'New game created successfully',
-//           data: aux
-//         });
-//       }
-//     } catch(e){
-//       res.status(500).send('Something went wrong');
-//     }
-//   }
 
 async function getGamesFromDB (){
     const games = await Videogame.findAll();

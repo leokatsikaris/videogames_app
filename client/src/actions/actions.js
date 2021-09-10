@@ -8,7 +8,7 @@ export function getGames() {
                 type: 'GET_GAMES',
                 payload: games.data
             })
-        })  
+        })
     }
 }
 
@@ -20,7 +20,7 @@ export function getGamesByName(nameSearched) {
                 type: 'GET_GAMES_BY_NAME',
                 payload: games.data
             })
-        })  
+        })
     }
 }
   
@@ -31,7 +31,7 @@ export function getGameDetail(idVideogame) {
             dispatch({
                 type: 'GET_GAME_DETAIL',
                 payload: game.data
-            })
+            }) 
         })
     }
 }
