@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Videogames }  from './videogames/videogames';
-// import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { getGames } from '../../actions/actions';
 import { useParams } from 'react-router-dom';
@@ -16,7 +15,6 @@ export function Home() {
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [gamesPerPage, setGamesPerPage] = useState(15);
-    // const videogames = useSelector(state => state.games);
     const { attribute, order } = useParams();
 
     useEffect(() => {
@@ -29,7 +27,7 @@ export function Home() {
         fetchAPI();
       }, []);
 
-    console.log(videogames);
+    // console.log(videogames);
     
     // PARA PAGINAR ----------------------------------------------------------
 
@@ -72,6 +70,7 @@ export function Home() {
                 <option>Order by rating: lowest to highest</option>
             </select>
             <Videogames videogames={currentGames} loading={loading}/>
+            <br />
             <Pagination gamesPerPage={gamesPerPage} totalGames={videogames.length} paginate={paginate} />
         </div>
     )

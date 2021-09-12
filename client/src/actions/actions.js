@@ -1,16 +1,16 @@
 import axios from 'axios';
 
-export function getGames() {
-    return function (dispatch) {
-        return axios.get('http://localhost:3001/videogames')
-        .then((games) => {
-            dispatch ({
-                type: 'GET_GAMES',
-                payload: games.data
-            })
-        })
-    }
-}
+// export function getGames() {
+//     return function (dispatch) {
+//         return axios.get('http://localhost:3001/videogames')
+//         .then((games) => {
+//             dispatch ({
+//                 type: 'GET_GAMES',
+//                 payload: games.data
+//             })
+//         })
+//     }
+// }
 
 export function getGamesByName(nameSearched) {
     return function (dispatch) {

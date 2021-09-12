@@ -2,6 +2,7 @@ import React , { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { addGame } from '../../actions/actions';
+import styles from './createGame.module.css';
 
 const genres = ["Indie", "Adventure", "Strategy", "Shooter", "Puzzle", "Arcade", "Platformer", "Racing", "Massively Multiplayer", "Sports", "Fighting", "Family", "Board Games", "Educational", "Card", "Simulation", "Casual", "RPG", "Action"].sort();
 
@@ -89,7 +90,7 @@ export function CreateGame () {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={styles.formWindow}>
                 <label>Name: </label>
                 <input 
                 name='name'
@@ -167,7 +168,7 @@ export function CreateGame () {
                 <p>{error.platforms}</p>
                 <br />
                 <br />
-                <button type="submit">Create game</button>
+                <button type="submit" className={styles.submitButton}>Create game</button>
             </form>
         </div>
     )

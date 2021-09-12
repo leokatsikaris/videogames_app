@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getGamesByName } from '../../actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from '../home/videogame/videogame.module.css';
 
 export function GameByName() {
     const dispatch = useDispatch();
@@ -27,9 +28,13 @@ export function GameByName() {
             <div>
                {gamesByName && gamesByName.map(g => {
                    return( 
-                   <div>
-                       <img src={g?.background_image} alt=""/>
+                   <div className={styles.imgWrapper} className={styles.gameBox}>
+                       <img src={g?.background_image} alt="" className={styles.imgFixer}/>
                        <p><Link to={`/videogame/${g.id}`}>{g?.name}</Link></p>
+                       <div >Genres: </div>
+                        {g?.genres.map(g => {
+                            return <p key={g.id}>{g.name}</p>
+                        })}
                    </div>)
                })}
                 

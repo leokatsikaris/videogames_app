@@ -10,14 +10,14 @@ import { GameByName } from '../src/components/gamesByName/gamesByName';
 import { Navbar } from '../src/components/navbar/navbar';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getGenres, getGames } from './actions/actions';
+import { getGenres } from './actions/actions';
 
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-      dispatch(getGames())
-  }, [dispatch]);
+  // useEffect(() => {
+  //     dispatch(getGames())
+  // }, [dispatch]);
 
   useEffect(() => {
     dispatch(getGenres())

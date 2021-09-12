@@ -41,7 +41,6 @@ export function Videogames({ videogames, loading }) {
                 genres={v.genres}
                 />
             })}
-            {/* <Pagination gamesPerPage={gamesPerPage} totalGames={videogames.length} /> */}
         </div>
     )
 }
