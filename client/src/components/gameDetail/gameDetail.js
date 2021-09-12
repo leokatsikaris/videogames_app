@@ -24,12 +24,12 @@ export function GameDetail() {
                    <p key='3'>About: {g?.description_raw} </p>
                    <p key='4'>Released date: {g?.released}</p>
                    <p key='5'>Rating: {g?.rating}</p>
-                   {/* <ul>Platforms: {g?.platforms.map(p => {
+                   <ul>Platforms: {g?.platforms.map(p => {
                        return <li key={p.id}>{p.platform.name}</li>
                    })}</ul>
                     <ul>Genres: {g?.genres.map(gen => {
                        return <li key={gen.id * 2}>{gen.name}</li>
-                   })}</ul> */}
+                   })}</ul>
                </div>)
            })}
             

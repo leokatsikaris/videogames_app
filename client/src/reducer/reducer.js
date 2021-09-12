@@ -1,7 +1,10 @@
 const initialState = {
     games: [],
     gameDetail: [],
-    gamesByName: []
+    gamesByName: [],
+    gameAdded: [],
+    genres: [],
+    loading: true
   };
   
   function rootReducer(state = initialState, action) {
@@ -22,6 +25,18 @@ const initialState = {
             ...state.gameDetail,
             gameDetail: action.payload
         };
+    }
+    if (action.type === "ADD_GAME") {
+        return {
+            ...state.gameAdded,
+            gameAdded: action.payload
+        }
+    }
+    if (action.type === "GET_GENRES") {
+        return {
+            ...state.genres,
+            genres: action.payload
+        }
     }
     return state;
   }

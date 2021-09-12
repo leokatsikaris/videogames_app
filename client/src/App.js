@@ -8,16 +8,20 @@ import { About } from '../src/components/navbar/about/about';
 import { CreateGame } from '../src/components/createGame/createGame';
 import { GameByName } from '../src/components/gamesByName/gamesByName';
 import { Navbar } from '../src/components/navbar/navbar';
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { getGames } from './actions/actions';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getGenres, getGames } from './actions/actions';
 
 function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //     dispatch(getGames())
-  // }, [dispatch]);
+  useEffect(() => {
+      dispatch(getGames())
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getGenres())
+}, [dispatch]);
 
   return (
     <div className="App">
@@ -42,6 +46,10 @@ function App() {
       <Route path='/videogames/:nameSearched' render={props => <>
       <Navbar />
       <GameByName />
+      </> } />
+      <Route path='/home/:attribute/:order' render={props => <>
+      <Navbar />
+      <Home />
       </> } />
     </div>
   );

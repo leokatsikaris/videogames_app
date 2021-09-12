@@ -36,15 +36,26 @@ export function getGameDetail(idVideogame) {
     }
 }
 
-// export function addGame(body) {
-//     return function(dispatch){
-//         return axios.post('http://localhost:3001/videogame', body)
-//         .then ((game) => {
-//             dispatch({
-//                 type: 'ADD_GAME',
-//                 payload: game.data
-//             })
-//         })
-//     }
+export function addGame(body) {
+    return function(dispatch){
+        return axios.post('http://localhost:3001/videogame', body)
+        .then ((game) => {
+            dispatch({
+                type: 'ADD_GAME',
+                payload: game.data
+            })
+        })
+    }
+}
 
-// }
+export function getGenres(){
+    return function(dispatch){
+        return axios.get('http://localhost:3001/genres')
+        .then((genres) => {
+            dispatch({
+                type: 'GET_GENRES',
+                payload: genres.data
+            })
+        })
+    }
+}

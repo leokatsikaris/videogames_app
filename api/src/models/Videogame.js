@@ -13,11 +13,11 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
+    description_raw: {
       type: DataTypes.TEXT,
       allowNull: false
     },
-    released_date: {
+    released: {
       type: DataTypes.STRING
     },
     rating: {
@@ -27,6 +27,10 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: false
     },
+    db: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    }
   },
   {
     timestamps: false

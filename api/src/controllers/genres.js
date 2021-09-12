@@ -14,7 +14,6 @@ async function createGender(genderName) {
 async function getGenres (req, res) {
     try {
         let genresDB = await Gender.findAll();
-        console.log(genresDB);
         if (!genresDB[0]){
             const genresAPI = await axios.get(`${API_GENRES}?key=${API_KEY}`);
             await Promise.all(genresAPI.data.results.map(async (g) => {
