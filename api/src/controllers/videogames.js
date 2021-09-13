@@ -91,6 +91,7 @@ async function getVideogamesById (req, res){
             return res.json(gameId);
         }
     } catch (error){
+        console.log(error);
         return res.status(400).send('This ID does not belong to a videogame');
     }
 }

@@ -12,7 +12,7 @@ export function Navbar () {
             <NavLink to ='/create_game' activeStyle={{ backgroundColor: "#b99a02" }}>Create a game</NavLink>
             <NavLink to='/about' activeStyle={{ backgroundColor: "#b99a02" }}>About</NavLink>
             <Search />
-            <a href='#'>Games created</a>
+            <NavLink to ='/myGames'>My games</NavLink>
             </li>
             </ul>
         </nav>

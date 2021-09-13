@@ -136,12 +136,12 @@ export function CreateGame () {
                 <select name='genres' onChange={handleSelect}>
                   <option disabled selected hidden>Select at least one gender...</option>
                   {genres.map(g => {
-                    return <option value={g}>{g}</option>
+                    return <option key={g} value={g}>{g}</option>
                   })}
                 </select>
                 {input.genres.map(g => {
                 return (
-                <div>
+                <div key={g}>
                   <p>{g}</p>
                   <button name={g} type='button' onClick={() => handleDelete1(g)}>X</button>
                 </div>
@@ -154,12 +154,12 @@ export function CreateGame () {
                 <select name='platforms' onChange={handleSelect}>
                   <option disabled selected hidden>Select at least one platform...</option>
                   {platforms.map(p => {
-                    return <option value={p}>{p}</option>
+                    return <option key={p} value={p}>{p}</option>
                   })}
                 </select>
               {input.platforms.map(p => {
                 return (
-                <div>
+                <div key={p}>
                   <p>{p}</p>
                   <button type='button' onClick={() => handleDelete2(p)}>X</button>
                 </div>

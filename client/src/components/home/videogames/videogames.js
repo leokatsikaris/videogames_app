@@ -1,11 +1,11 @@
 import { Videogame } from '../videogame/videogame';
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { useEffect, useState } from 'react';
 // import { connect } from 'react-redux';
 // import { getGames } from '../../../actions/actions';
-import { Pagination } from '../pagination/pagination';
+// import { Pagination } from '../pagination/pagination';
 
 
 export function Videogames({ videogames, loading }) {
@@ -14,7 +14,6 @@ export function Videogames({ videogames, loading }) {
     // const [gamesPerPage, setPostsPerPage] = useState(15);
     // let currentGames = []
 
-    console.log(videogames);
     // const indexOfLastGame = currentPage * gamesPerPage;
     // const indexOfFirstGame = indexOfLastGame - gamesPerPage;
     // if (videogames) {
@@ -35,6 +34,7 @@ export function Videogames({ videogames, loading }) {
                     v.genres = v.Genders; 
                 }
                 return <Videogame 
+                key={v.id}
                 id={v?.id}
                 name={v?.name} 
                 background_image={v?.background_image}

@@ -11,6 +11,7 @@ import { Navbar } from '../src/components/navbar/navbar';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getGenres } from './actions/actions';
+import { MyGames } from './components/myGames/myGames';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ function App() {
     <div className="App">
       <h1>Henry Videogames</h1>
       <Route exact path="/" component={Landing} />
-      <Route path='/home' render={props => <>
+      <Route exact path='/home' render={props => <>
       <Navbar />
       <Home />
       </> } />
@@ -51,6 +52,11 @@ function App() {
       <Navbar />
       <Home />
       </> } />
+      <Route path='/myGames' render={props => <>
+      <Navbar />
+      <MyGames />
+      </> } />
+
     </div>
   );
 }

@@ -20,7 +20,7 @@ export function GameByName() {
             <div>
                 <h2>Videogame not found</h2>
                 <br />
-                <Link to='/home'><h2>Return to Home</h2></Link>
+                <Link to='/home'><h2>Back to Home</h2></Link>
             </div>
         )
     } else {
