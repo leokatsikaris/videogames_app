@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React , { useEffect, useState } from 'react';
 import { Videogames }  from './videogames/videogames';
 import { useDispatch, useSelector } from 'react-redux';
 // import { getGames } from '../../actions/actions';
@@ -9,9 +9,9 @@ import axios from 'axios';
 
 
 export function Home() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const history = useHistory();
-    // var loading = useSelector(state => state.loading);
+    var genres = useSelector(state => state.genres);
     let [videogames, setVideogames] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -62,10 +62,15 @@ export function Home() {
         videogames = videogames.sort(((a, b) => b.rating - a.rating));
     }
 
-    // HANDLER DEL SELECT 
-    const handleSelect = function(order) {
+    // HANDLER DEL SELECT DE ORDERS
+    const handleOrderSelect = function(order) {
         order = order.split(' ');
          history.push(`/home/${order[0]}/${order[1]}`);
+    }
+
+    // HANDLER DEL SELECT DE GENRES FILTER
+    const handleGenderSelect = function(gender){
+      history.push(`/gender/${gender}`);
     }
 
     // PARA PAGINAR ----------------------------------------------------------
@@ -77,15 +82,31 @@ export function Home() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 
+    //ORDENO GENEROS ALFABETICAMENTE
+    genres = genres.sort(function (a, b) {
+      if (a.name > b.name) {
+        return 1;
+      }
+      if (a.name < b.name) {
+        return -1;
+      }
+      return 0;
+    });
+
+
     return (
         <div>
             <h1>Home</h1>
-            <select onChange={(e) => handleSelect(e.target.value)}>
+            <select onChange={(e) => handleOrderSelect(e.target.value)}>
                 <option disabled selected hidden>Select order...</option>
                 <option value={'name asc'}>Order by name: A-Z</option>
                 <option value={'name desc'}>Order by name: Z-A</option>
-                <option value={'rating desc'} onChange={(e) => handleSelect(e.target.name, e.target.value)}>Order by rating: highest to lowest</option>
+                <option value={'rating desc'} onChange={(e) => handleOrderSelect(e.target.name, e.target.value)}>Order by rating: highest to lowest</option>
                 <option value={'rating asc'}>Order by rating: lowest to highest</option>
+            </select>
+            <select onChange={(e) => handleGenderSelect(e.target.value)}>
+              <option disabled selected hidden> Filter by gender...</option>
+              {genres.map(g => <option value={g.name}>{g.name}</option>)}
             </select>
             <Videogames videogames={currentGames} loading={loading}/>
             <Pagination gamesPerPage={gamesPerPage} totalGames={videogames.length} paginate={paginate} />

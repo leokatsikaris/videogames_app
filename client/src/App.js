@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getGenres } from './actions/actions';
 import { MyGames } from './components/myGames/myGames';
+import { GenresFilter } from './components/genresFilter/genresFilter';
 
 function App() {
   const dispatch = useDispatch();
@@ -55,6 +56,10 @@ function App() {
       <Route path='/myGames' render={props => <>
       <Navbar />
       <MyGames />
+      </> } />
+      <Route path='/gender/:gender' render={props => <>
+      <Navbar />
+      <GenresFilter />
       </> } />
 
     </div>
