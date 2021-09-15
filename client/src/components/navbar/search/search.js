@@ -1,5 +1,6 @@
 import React, { useState }from 'react';
 import { useHistory } from "react-router-dom";
+import styles from './search.module.css';
 
 
 export function Search() {
@@ -26,8 +27,10 @@ export function Search() {
             name='name' 
             value= {input.name}
             placeholder='Insert a name'
+            className={styles.text}
             onChange={handleChange}/>
             <button 
+            className={styles.text}
             onClick={handleClick}>Search</button> 
         </div>
     )

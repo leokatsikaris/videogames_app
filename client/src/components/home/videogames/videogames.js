@@ -17,7 +17,7 @@ export function Videogames({ videogames, loading }) {
             <div className={styles.games}>
             {videogames && videogames.map((v) => {
                 if (v?.db){
-                    v.background_image = 'https://img2.freepng.es/20190529/zlr/kisspng-video-games-game-controllers-vector-graphics-joyst-gamepad-free-tools-and-utensils-icons-epicgaming-5ceef84f10d138.0867366015591650070689.jpg';
+                    v.background_image = 'https://i.pinimg.com/736x/b3/6b/7c/b36b7c9c4ad5e3d20e302d6216623091.jpg';
                     v.genres = v.Genders; 
                 }
                 return <Videogame 

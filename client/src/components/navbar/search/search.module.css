@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
+
+.text{
+    font-family: 'Unica One', cursive;
+}
+
+input{
+    width: 200px;
+}

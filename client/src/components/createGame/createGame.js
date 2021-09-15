@@ -115,8 +115,9 @@ export function CreateGame () {
                 placeholder='Insert a name'
                 onChange={handleChange} 
                 onKeyUp={handleChange}
-                onBlur={handleChange} />
-                <p>{error.name}</p>
+                onBlur={handleChange} 
+                className={styles.text}/>
+                <p>{error?.name}</p>
                 <br />
                 <label>Description: </label>
                 <br />
@@ -127,26 +128,29 @@ export function CreateGame () {
                 onChange={handleChange} 
                 onKeyUp={handleChange}
                 onBlur={handleChange}
+                className={styles.text}
                 />
-                <p>{error.description_raw}</p>
+                <p>{error?.description_raw}</p>
                 <br />
                 <label>Released date: </label>
                 <input 
                 name='released' 
                 value={input.released}
                 placeholder='Insert a date'
-                onChange={handleChange} />
+                onChange={handleChange} 
+                className={styles.text}/>
                 <br />
                 <label>Rating: </label>
                 <input 
                 name='rating' 
                 value={input.rating} 
                 placeholder='For example: 3.0'
-                onChange={handleChange}/>
+                onChange={handleChange}
+                className={styles.text}/>
                 <br />
                 <label>Gender/genres:</label>
                 <br />
-                <select name='genres' onChange={handleSelect}>
+                <select name='genres' onChange={handleSelect} className={styles.text}>
                   <option disabled selected hidden>Select at least one gender...</option>
                   {genres.map(g => {
                     return <option key={g} value={g}>{g}</option>
@@ -164,7 +168,7 @@ export function CreateGame () {
                 <br />
                 <label>Platform/s:</label>
                 <br />
-                <select name='platforms' onChange={handleSelect}>
+                <select name='platforms' onChange={handleSelect} className={styles.text}>
                   <option disabled selected hidden>Select at least one platform...</option>
                   {platforms.map(p => {
                     return <option key={p} value={p}>{p}</option>

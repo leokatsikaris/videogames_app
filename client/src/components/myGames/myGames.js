@@ -23,7 +23,7 @@ export function MyGames () {
         return <h2 className={styles.text}> Loading ... </h2>
     }
 
-    let gamesDB = []
+    let gamesDB = [];
     
     myGames.map(g => {
        if (g.db) gamesDB.push(g);

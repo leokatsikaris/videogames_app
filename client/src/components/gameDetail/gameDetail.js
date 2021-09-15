@@ -8,11 +8,10 @@ export function GameDetail() {
     const dispatch = useDispatch();
     const { idVideogame } = useParams();
     var gameDetail = useSelector(state => state.gameDetail);
-    const [loading, setLoading] = useState(false);
-    
+
     useEffect(() => {
         dispatch(getGameDetail(idVideogame))
-        setLoading(true);
+        // setLoading(true);
     }, [dispatch, idVideogame])
 
     let platformsShowed = [];
@@ -21,16 +20,13 @@ export function GameDetail() {
     // IGUALO LAS PROPIEDADES DE LOS JUEGOS CREADOS Y DE LOS JUEGOS DE LA API
     
     if (gameDetail?.db){
-        gameDetail.background_image = 'https://img2.freepng.es/20190529/zlr/kisspng-video-games-game-controllers-vector-graphics-joyst-gamepad-free-tools-and-utensils-icons-epicgaming-5ceef84f10d138.0867366015591650070689.jpg';
+        gameDetail.background_image = 'https://i.pinimg.com/736x/b3/6b/7c/b36b7c9c4ad5e3d20e302d6216623091.jpg';
         gameDetail.genres = gameDetail.Genders;
         gameDetail.platforms.map(p => platformsShowed.push(p));
     } else {
         gameDetail?.platforms?.map(p => platformsShowed.push(p.platform.name))
     }
     
-    // if (loading) {
-    //     return <h2> Loading ... </h2>
-    // }
 
         return (
             <div className={styles.component}>

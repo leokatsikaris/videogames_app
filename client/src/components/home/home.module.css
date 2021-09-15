@@ -1,7 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
+
 
 .homeTitle{
     color: white;
     font-family: 'Dancing Script', cursive;
     font-size: 125px;
+}
+
+.text{
+    font-family: 'Unica One', cursive;
+    font-size: 18px;
+}
+
+select{
+    width: 200px;
+    height: 35px;
 }

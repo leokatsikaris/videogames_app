@@ -89,14 +89,14 @@ export function Home() {
     return (
         <div >
             <h1 className={styles.homeTitle}>The Game Club</h1>
-            <select onChange={(e) => handleOrderSelect(e.target.value)}>
+            <select onChange={(e) => handleOrderSelect(e.target.value)} className={styles.text}>
                 <option disabled selected hidden>Select order...</option>
                 <option value={'name asc'}>Order by name: A-Z</option>
                 <option value={'name desc'}>Order by name: Z-A</option>
                 <option value={'rating desc'} onChange={(e) => handleOrderSelect(e.target.name, e.target.value)}>Order by rating: highest to lowest</option>
                 <option value={'rating asc'}>Order by rating: lowest to highest</option>
             </select>
-            <select onChange={(e) => handleGenderSelect(e.target.value)}>
+            <select onChange={(e) => handleGenderSelect(e.target.value)} className={styles.text}>
               <option disabled selected hidden> Filter by gender...</option>
               {genres.map(g => <option value={g}>{g}</option>)}
             </select>
