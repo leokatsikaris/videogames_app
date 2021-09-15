@@ -21,6 +21,7 @@ const initialState = {
         }
     }
     if (action.type === "GET_GAME_DETAIL") {
+        // console.log(action.payload);
         return {
             ...state.gameDetail,
             gameDetail: action.payload
@@ -34,10 +35,11 @@ const initialState = {
     }
     if (action.type === "GET_GENRES") {
         return {
-            ...state.genres,
+            // ...state.genres,
             genres: action.payload
         }
     }
+    
     return state;
   }
   

@@ -1,0 +1,14 @@
+.gamesContainer {
+    width: 100%;  
+  }
+  
+.games {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .loading{
+    color:white;
+  }
+  

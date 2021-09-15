@@ -27,7 +27,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Henry Videogames</h1>
       <Route exact path="/" component={Landing} />
       <Route exact path='/home' render={props => <>
       <Navbar />

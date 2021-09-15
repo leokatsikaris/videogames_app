@@ -4,6 +4,8 @@ const {v4: uuid} = require ('uuid');
 const {API_KEY, API_GAMES} = require ('../../constants');
 
 
+// CREAR JUEGO
+
 async function addGame (req, res) {
   const id = uuid();
   try {
@@ -36,12 +38,16 @@ async function addGame (req, res) {
   }
 }
 
+// TRAER JUEGOS DE LA BASE DE DATOS
+
 async function getGamesFromDB (){
     const games = await Videogame.findAll({
         include: Gender
     });
     return games; 
 }
+
+// TRAER TODOS LOS JUEGOS
 
 async function getVideogames (req, res){
     if (req.query.name){
@@ -83,12 +89,14 @@ async function getVideogames (req, res){
 
 async function getVideogamesById (req, res){
     try {
-        const videogames = await axios.get(`${API_GAMES}/${req.params.idVideogame}?key=${API_KEY}`);
-        if (videogames){
-          return res.json(videogames.data);
-        } else {
-            const gameId = await Videogame.findByPk(req.params.idVideogame);
+        if (req.params.idVideogame.length > 10){
+            const gameId = await Videogame.findByPk(req.params.idVideogame, {
+                include: Gender
+            });
             return res.json(gameId);
+        } else {
+            const videogames = await axios.get(`${API_GAMES}/${req.params.idVideogame}?key=${API_KEY}`);
+            return res.json(videogames.data);
         }
     } catch (error){
         console.log(error);

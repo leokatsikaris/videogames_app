@@ -9,7 +9,7 @@ export function Pagination ({ gamesPerPage, totalGames, paginate }) {
     }
 
     return (
-        <nav className={styles.wrapper}>
+        <nav className={styles.navPag}>
           <ul className={styles.pagination}>
             {pageNumbers.map((number) => (
               <li key={number} className={styles.pageItem}>

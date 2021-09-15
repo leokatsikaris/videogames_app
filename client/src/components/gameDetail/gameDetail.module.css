@@ -1,0 +1,17 @@
+.component{
+    font-size: 1.4em;
+    font-weight: lighter;
+  }
+
+  img{
+    height: 70%;
+    width: 70%;
+  }
+
+  p{
+    color:white;
+  }
+
+  .pTitle{
+    text-decoration: underline;
+  }

@@ -1,34 +1,38 @@
 import React , { useEffect, useState } from 'react';
 import { Videogames }  from './videogames/videogames';
-import { useDispatch, useSelector } from 'react-redux';
-// import { getGames } from '../../actions/actions';
+import { useDispatch} from 'react-redux';
+import { getGenres } from '../../actions/actions';
 import { useParams, useHistory } from 'react-router-dom';
 // import { Loading } from '../loading/loading';
 import { Pagination } from '../home/pagination/pagination';
 import axios from 'axios';
+import styles from './home.module.css';
+
+// LOS GÉNEROS PARA EL SELECT DEL FILTER 
+
+const genres = ["Indie", "Adventure", "Strategy", "Shooter", "Puzzle", "Arcade", "Platformer", "Racing", "Massively Multiplayer", "Sports", "Fighting", "Family", "Board Games", "Educational", "Card", "Simulation", "Casual", "RPG", "Action"].sort();
 
 
 export function Home() {
-    // const dispatch = useDispatch();
     const history = useHistory();
-    var genres = useSelector(state => state.genres);
+    const dispatch = useDispatch();
     let [videogames, setVideogames] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [gamesPerPage, setGamesPerPage] = useState(15);
+    const [gamesPerPage] = useState(15);
     const { attribute, order } = useParams();
 
     useEffect(() => {
         const fetchAPI = async () => {
           setLoading(true);
           const resultGames = await axios.get('http://localhost:3001/videogames');
-          setVideogames(resultGames.data);
+          await setVideogames(resultGames.data);
           setLoading(false);
         };
+        dispatch(getGenres());
         fetchAPI();
-      }, []);
+      }, [dispatch]);
 
-    // console.log(videogames);
     
     // PARA ORDENAR  --------------------------------------------------------
 
@@ -80,23 +84,11 @@ export function Home() {
     const currentGames = videogames.slice(indexOfFirstGame, indexOfLastGame);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-
-    //ORDENO GENEROS ALFABETICAMENTE
-    genres = genres.sort(function (a, b) {
-      if (a.name > b.name) {
-        return 1;
-      }
-      if (a.name < b.name) {
-        return -1;
-      }
-      return 0;
-    });
-
+    
 
     return (
-        <div>
-            <h1>Home</h1>
+        <div >
+            <h1 className={styles.homeTitle}>The Game Club</h1>
             <select onChange={(e) => handleOrderSelect(e.target.value)}>
                 <option disabled selected hidden>Select order...</option>
                 <option value={'name asc'}>Order by name: A-Z</option>
@@ -106,7 +98,7 @@ export function Home() {
             </select>
             <select onChange={(e) => handleGenderSelect(e.target.value)}>
               <option disabled selected hidden> Filter by gender...</option>
-              {genres.map(g => <option value={g.name}>{g.name}</option>)}
+              {genres.map(g => <option value={g}>{g}</option>)}
             </select>
             <Videogames videogames={currentGames} loading={loading}/>
             <Pagination gamesPerPage={gamesPerPage} totalGames={videogames.length} paginate={paginate} />

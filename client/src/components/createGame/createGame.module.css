@@ -1,13 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
+
+div {
+    font-family: 'Unica One', cursive;
+}
+
 .formWindow{
     margin: auto;
     margin-top: 20px;
     width: 300px;
     width: 200px;
-    border: solid 1px #000000;
+    border: solid 2px #000000;
     border-radius: 10px;
-    font-family: sans-serif;
+    font-family: 'Unica One', cursive;
     text-align: center;
-    background-color: rgba(255, 215, 0);
+    background-color: rgb(211, 14, 73);
     justify-content: space-around;
 }
 
@@ -32,19 +38,32 @@
 
   background-color: #000000;
   border-radius: 6px;
-  border: 1px solid #ffdd00;
+  border: 1px solid rgb(211, 14, 73);
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: Arial;
+  font-family: 'Unica One', cursive;
   font-size: 15px;
   font-weight: lighter;
   padding: 6px 20px;
   margin: 10px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #ffe100;
+  text-shadow: 0px 1px 0px rgb(211, 14, 73);
 }
 
 .submitButton:hover{
     background-color: black;
+}
+
+label {
+    color:black;
+}
+
+option {
+    font-family: 'Unica One', cursive;
+}
+
+.divPlatforms{
+    font-size: 15px;
+    display: inline;
 }

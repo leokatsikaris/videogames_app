@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Videogames }  from '../home/videogames/videogames';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Pagination } from '../home/pagination/pagination';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import styles from './genresFilter.module.css';
 
 export function GenresFilter () {
     let [videogames, setVideogames] = useState([]);
     const { gender } = useParams();
-    const genres = useSelector(state => state.genres);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [gamesPerPage, setGamesPerPage] = useState(15);
+    const [gamesPerPage] = useState(15);
 
 
     useEffect(() => {
@@ -26,18 +25,17 @@ export function GenresFilter () {
 
       let gamesFiltered = [];
 
-
     videogames.map(v => {
-        if (v.Genders?.includes(gender)) {
-            return v
+        if (v.Genders) {
+            v.Genders.map(g => {
+                if (v === gender) gamesFiltered.push(v);
+            })
         }else {
             v.genres.map(gen => {
                 if (gen.name === gender) gamesFiltered.push(v); 
             })
         } 
     })
-
-    // console.log(gamesFiltered);
         
 
           // PARA PAGINAR ----------------------------------------------------------
@@ -50,7 +48,7 @@ export function GenresFilter () {
 
         return (
             <div>
-                <h2>All {gender} games</h2>
+                <h2 className={styles.stylesTitle}>All {gender} games</h2>
                 <Videogames videogames={currentGames} loading={loading}/>
                 <Pagination gamesPerPage={gamesPerPage} totalGames={videogames.length} paginate={paginate} />
                 <Link to='/home'><h2>Back to Home</h2></Link>

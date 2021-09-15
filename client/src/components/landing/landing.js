@@ -1,19 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { getGames } from '../../actions/actions';
+import { NavLink } from 'react-router-dom';
+import styles from './landing.module.css';
 
 export function Landing() {
-    // const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //     dispatch(getGames())
-    // }, [dispatch]);
 
     return (
-        <div>
-            <Link to='/home'>Enter</Link>
+        <div className={styles.wrapper}>
+            <div className={styles.neonWrapper}>
+                <NavLink to='/home' 
+                style={{ textDecoration: 'none' }
+                }>
+                <div className={styles.neonText}>ENTER</div>
+                </NavLink>
+            </div>
         </div>
     )
 }

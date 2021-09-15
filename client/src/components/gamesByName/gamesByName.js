@@ -2,18 +2,18 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getGamesByName } from '../../actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from '../home/videogame/videogame.module.css';
+import { Videogames } from '../home/videogames/videogames';  
 
 export function GameByName() {
     const dispatch = useDispatch();
     const { nameSearched } = useParams();
+    var gamesByName = useSelector(state => state.gamesByName);
+    // const [loading, setLoading] = useState(true);
     
     useEffect(() => {
         dispatch(getGamesByName(nameSearched))
     }, [dispatch, nameSearched])
 
-    // var errors = useSelector(state => state.errors);
-    var gamesByName = useSelector(state => state.gamesByName);
 
     if (!gamesByName){
         return (
@@ -26,17 +26,7 @@ export function GameByName() {
     } else {
         return (
             <div>
-               {gamesByName && gamesByName.map(g => {
-                   return( 
-                   <div className={styles.imgWrapper} className={styles.gameBox}>
-                       <img src={g?.background_image} alt="" className={styles.imgFixer}/>
-                       <p><Link to={`/videogame/${g.id}`}>{g?.name}</Link></p>
-                       <div >Genres: </div>
-                        {g?.genres.map(g => {
-                            return <p key={g.id}>{g.name}</p>
-                        })}
-                   </div>)
-               })}
+               <Videogames videogames={gamesByName} />
                 
             </div>
         )

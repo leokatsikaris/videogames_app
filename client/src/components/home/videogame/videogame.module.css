@@ -1,43 +1,45 @@
-.imgFixer {
-    width: 16em;
-    height: 12em;
-    margin: auto;
-    border: 2px solid;
-    border-radius: 10px;
-  }
-  
-  .imgWrapper {
-    margin-top: 8px;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
 
-  .gameBox {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 280px;
-    height: 400px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: black;
-    border-radius: 10px;
-    font-family: sans-serif;
-    background-color: rgba(255, 215, 0);
-    transition: 1s ease;
-    text-decoration: none;
-  }
-  
-  .gameBox div {
-    font-weight: bold;
-  }
-  .gameBox p {
-    font-weight: lighter;
-  }
-  
-  .gameBox:hover {
-    background-color: rgb(222, 187, 0);
-    -webkit-transform: scale(1.03);
-    -ms-transform: scale(1.03);
-    transform: scale(1.03);
-    transition: 0.4s ease;
-  }
+
+.game {
+  font-family: 'Unica One', cursive;
+  width: 290px;
+  height: 380px;
+  border: none;
+  overflow: hidden;
+  margin-left: 15px;
+  margin-right: 20px;
+  margin-top: 15px;
+  background: #0F2027; 
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027); 
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027); 
+}
+
+.image {
+  height: 50%;
+}
+
+.image img {
+  height: 100%;
+  width: 100%;
+}
+
+.detail h3 {
+  margin-top: 8px;
+  color: whitesmoke;
+  margin-top: 4px;
+  color: whitesmoke;
+  font-size: 25px;
+}
+
+
+.detail {
+  color: whitesmoke;
+  height: 40%;
+}
+
+
+.divGenres{
+  font-size: 18px;
+  text-decoration: underline;
+}
