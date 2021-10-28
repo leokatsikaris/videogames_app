@@ -1,2 +1,5 @@
 # videogames_app
-Videogames app created with React, Redux, Express and Sequelize-Postgres. 
+
+IMPORTANT! 
+
+Go to master branch to see the project. 
