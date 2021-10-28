@@ -8,6 +8,6 @@ It's a videogames website which includes some functions like create new videogam
 
 The data is extracted from the RAWG videogames API. 
 
-To execute the app type "npm install" in both "client" and "api" folders. And then type "npm start" and wait browser to open the website. 
+To execute the app type "npm install" in both "client" and "api" folders. And then type "npm start" on them and wait browser to open the website. 
 
 Hope you like it! I'm very open to constructive comments and opinions.
